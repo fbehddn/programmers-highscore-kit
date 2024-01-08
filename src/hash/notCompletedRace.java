@@ -1,33 +1,30 @@
 package hash;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class notCompletedRace {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Solution solution = new Solution();
+        String result = solution.solution(new String[]{"leo", "kiki", "eden"}, new String[]{"eden", "kiki"});
+
+        System.out.println(result);
+    }
+}
+
+class Solution {
+    public String solution(String[] participant, String[] completion) {
 
         HashMap<Integer, String> mapP = new HashMap<>();
 
-        for (int i = 0; i < 4; i++) {
-            mapP.put(i, sc.next());
+        for (int i = 0; i < participant.length; i++) {
+            mapP.put(i, participant[i]);
         }
 
-        String[] c = new String[mapP.size() - 1];
-
-        for (int i = 0; i < mapP.size() - 1; i++) {
-            c[i] = sc.next();
-        }
-
-        /**
-         * 1. remove 시 index 에 변동이 생김..
-         * 2. map size 가 즉각 변동되어 for 문이 끝까지 돌지 않음
-         * => map 하나를 똑같이 복사?
-         */
-
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 4; j++) {
-                if (c[i].equals(mapP.get(j))) {
+        for (int i = 0; i < completion.length; i++) {
+            for (int j = 0; j < participant.length; j++) {
+                if (completion[i].equals(mapP.get(j))) {
                     mapP.remove(j);
                     break;
                 }
@@ -35,7 +32,8 @@ public class notCompletedRace {
         }
 
         for (String value : mapP.values()) {
-            System.out.println(value);
+            return value;
         }
+        return null;
     }
 }
