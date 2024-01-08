@@ -9,29 +9,31 @@ public class notCompletedRace {
 
         System.out.println(result);
     }
-}
 
-class Solution {
-    public String solution(String[] participant, String[] completion) {
+    static class Solution {
+        public String solution(String[] participant, String[] completion) {
 
-        Arrays.sort(participant); // e k l // f j m n v  // a m m s
-        Arrays.sort(completion); // e k    // f j m n    // a m s
+            Arrays.sort(participant); // e k l // f j m n v  // a m m s
+            Arrays.sort(completion); // e k    // f j m n    // a m s
 
-        int count = 0;
+            int count = 0;
 
-        if(completion.length==0) return participant[0];
+            if(completion.length==0) return participant[0];
 
-        for (int i = 0; i < participant.length; i++) {
-            if (participant[i].equals(completion[i])) {
-                count++;
-            }else{
-                return participant[i];
+            for (int i = 0; i < participant.length; i++) {
+                if (participant[i].equals(completion[i])) {
+                    count++;
+                }else{
+                    return participant[i];
+                }
+                if (count == completion.length) {
+                    return participant[participant.length - 1];
+                }
             }
-            if (count == completion.length) {
-                return participant[participant.length - 1];
-            }
+
+            return "test";
         }
-
-        return "test";
     }
 }
+
+
