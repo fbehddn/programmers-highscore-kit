@@ -14,10 +14,10 @@ public class HateSameNumber {
     static class Solution{
         public int[] solution(int []arr) {
             Stack<Integer> stk = new Stack<>();
-            stk.push(arr[0]);
 
-            for (int i = 1; i < arr.length; i++) {
-                if(!stk.peek().equals(arr[i])) stk.push(arr[i]);
+            for (int i : arr) {
+                if (stk.isEmpty()) stk.push(i);
+                if (!stk.peek().equals(i)) stk.push(i);
             }
 
             return stk.stream().mapToInt(i -> i).toArray();
