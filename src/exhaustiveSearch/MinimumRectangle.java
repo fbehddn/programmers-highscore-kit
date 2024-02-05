@@ -9,16 +9,25 @@ public class MinimumRectangle {
 
     static class Solution{
         public int solution(int[][] sizes) {
-            int answer = 0;
 
             /**
-             * 1. 가로길이가 가장 큰 명함 선택
-             * 2. 세로길이가 가장 큰 명함을 선택하고 이 길이가 1에서 선택한 가로길이보다 작고,
-             * 3. 해당 명함의 세로길이보다 가로길이가 작아야함 -> 가로 세로 뒤집기
-             * 4. 이후 모든 명함의 가로길이보다 세로길이가 작은지 확인 후,
-             * => 1에서 선택한 명함의 가로 길이 * 세로 길이가 가장 큰 명함의 세로길이
+             * 1. 가로 > 세로 가 되게 명함 눕히기
+             * 2. 가로길이들 중 가장 큰 값, 세로 길이들 중 가장 큰 값 선택
+             * 3. 2 에서 고른 두 값 곱하기
              */
-            return answer;
+
+            int maxW = 0;
+            int maxH = 0;
+
+            for (int[] size : sizes) {
+                int tempMax = Math.max(size[0], size[1]);
+                int tempMin = Math.min(size[0], size[1]);
+
+                maxW = Math.max(maxW, tempMax);
+                maxH = Math.max(maxH, tempMin);
+            }
+
+            return maxW * maxH;
         }
     }
 }
